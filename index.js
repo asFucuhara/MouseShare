@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 app.set('io', require('./services/sockeio')(server));
 
-if (process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client', 'build')));
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));

@@ -12,17 +12,14 @@ class App extends Component {
   sendCursorPosition(cursor) {
     if (this.readyToUpdate === true) {
       this.readyToUpdate = false;
-
-      console.log('1234');
       this.socket.emit('cursorChanged', { position: cursor.position });
     } else {
-      console.log('123');
     }
   }
 
   componentDidMount() {
     this.interval = setInterval(() => (this.readyToUpdate = true), 50);
-    this.socket = socketIOClient('localhost:5000');
+    this.socket = socketIOClient('/');
     this.socket.on('update', data => {
       const newCursors = { ...this.state.cursors };
       newCursors[data.id] = data;

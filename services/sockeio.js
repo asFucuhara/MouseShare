@@ -17,7 +17,7 @@ module.exports = server => {
         readyForUpdate = false;
         const newObj = { id: socket.id, ...cursor.position };
         console.log(newObj);
-        socket.broadcast.emit('update', newObj); //todo: set to broadcast
+        socket.broadcast.emit('update', newObj);
       }
     });
   });
